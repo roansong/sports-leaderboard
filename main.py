@@ -1,7 +1,7 @@
 # coding=utf-8
 from sys import argv
-DEFAULT_FILE = 'example.txt'
 
+DEFAULT_FILE = 'example.txt'
 LEAGUE = dict()
 
 
@@ -24,7 +24,7 @@ def update_league_data(fname: str):
             match = infile.readline().rstrip()
 
 
-def calculate_standings():
+def calculate_standings() -> str:
     leaderboard = dict()
     for team, score in LEAGUE.items():
         leaderboard[score] = leaderboard.setdefault(score, [])
