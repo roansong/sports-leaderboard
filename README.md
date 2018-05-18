@@ -12,7 +12,7 @@
     
 3. Run!
 
-    ``venv/bin/python file1 file2 ... fileN``
+    ``venv/bin/python main.py file1 file2 ... fileN``
     
     If no arguments are given, the default file will be used (``example.txt``).
     
