@@ -49,8 +49,8 @@ if __name__ == '__main__':
     if len(argv) > 1:
         fnames = argv[1:]
     else:
-        print(f'Using example file, {DEFAULT_FILE}')
         fnames = [DEFAULT_FILE]
+    print(f'Reading from files: {", ".join(fnames)}')
 
     for fname in fnames:
         update_league_data(fname)
