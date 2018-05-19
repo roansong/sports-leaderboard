@@ -9,6 +9,25 @@ DATA_DIR = 'data'
 
 
 def parse_line(line: str) -> Tuple[Tuple[str], Tuple[int]]:
+    """
+    This function accepts a line containing match data, and returns the teams
+    and scores of the match.
+
+    Note: to account for team names with spaces, the last space on each side is
+    used as the index at which to split between team and score.
+
+    Example input::
+
+        'Lions 3, FC Awesome 4'
+
+    Example output::
+
+        (('Lions', 'FC Awesome'), (3, 4))
+
+    :param line: String describing a single match, e.g.
+           ``'Lions 3, FC Awesome 4'``
+    :return: Tuple containing a tuple of team names and a tuple of scores
+    """
     match_data = [(team[:team.rfind(' ')], team[team.rfind(' '):])
                   for team in line.split(', ')]
     teams, scores = zip(*match_data)
@@ -17,6 +36,24 @@ def parse_line(line: str) -> Tuple[Tuple[str], Tuple[int]]:
 
 
 def update_league_data(fname: str) -> None:
+    """
+    This function reads match data from the file specified by ``fname`` and
+    updates the global ``LEAGUE`` dictionary with match results. Dictionaries
+    are mutable objects, so no value is returned from this function.
+
+    Scoring:
+
+    ======  ======
+    Result  Points
+    ======  ======
+    Win     3
+    Draw    1
+    Loss    0
+    ======  ======
+
+    :param fname: String filename
+    :return: None
+    """
     with open(fname, 'r') as infile:
         match = infile.readline().rstrip()
         while match:
@@ -33,6 +70,21 @@ def update_league_data(fname: str) -> None:
 
 
 def calculate_standings() -> str:
+    """
+    This function generates a leaderboard from the global ``LEAGUE`` dictionary.
+    Teams are ranked by their score in descending order. Any teams with the same
+    score are given a matching rank, and are ordered alphabetically.
+
+    Example output::
+
+        1. Tarantulas, 6 pts
+        2. Lions, 5 pts
+        3. FC Awesome, 1 pt
+        3. Snakes, 1 pt
+        5. Grouches, 0 pts
+
+    :return: A string displaying the leaderboard
+    """
     leaderboard = dict()
     for team, score in LEAGUE.items():
         leaderboard[score] = leaderboard.setdefault(score, [])
