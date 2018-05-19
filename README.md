@@ -33,6 +33,7 @@
     
    If no arguments are given, the default file will be used (``example.txt``).
    Output is saved to a timestamped text file in the ``data`` folder.
+   You can use ``make clean`` to remove these files.
 ## File Format
 
 The input files should contain a sequence of matches, one per line. The format
