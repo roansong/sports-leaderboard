@@ -9,8 +9,13 @@
    python3 -m venv venv
    venv/bin/pip install -r requirements.txt
    ```
-    
-2. Run!
+
+2. Run tests:
+
+    ``pytest tests``    
+
+
+3. Run!
 
     ``venv/bin/python main.py file1 file2 ... fileN``
     

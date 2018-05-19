@@ -1,20 +1,26 @@
 # coding=utf-8
 import datetime
 from sys import argv
+from typing import List, Tuple
 
 DEFAULT_FILE = 'example.txt'
 LEAGUE = dict()
 DATA_DIR = 'data'
 
 
-def update_league_data(fname: str):
+def parse_line(line: str) -> Tuple[Tuple[str], Tuple[int]]:
+    match_data = [(team[:team.rfind(' ')], team[team.rfind(' '):])
+                  for team in line.split(', ')]
+    teams, scores = zip(*match_data)
+    scores = tuple(int(score) for score in scores)
+    return teams, scores
+
+
+def update_league_data(fname: str) -> None:
     with open(fname, 'r') as infile:
         match = infile.readline().rstrip()
         while match:
-            match_data = [(team[:team.rfind(' ')], team[team.rfind(' '):])
-                          for team in match.split(', ')]
-            teams, scores = zip(*match_data)
-            scores = tuple(int(score) for score in scores)
+            teams, scores = parse_line(match)
             [LEAGUE.setdefault(team, 0) for team in teams]
             if scores[0] == scores[1]:
                 LEAGUE[teams[0]] += 1
