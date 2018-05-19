@@ -1,8 +1,10 @@
 # coding=utf-8
+import datetime
 from sys import argv
 
 DEFAULT_FILE = 'example.txt'
 LEAGUE = dict()
+DATA_DIR = 'data'
 
 
 def update_league_data(fname: str):
@@ -57,3 +59,8 @@ if __name__ == '__main__':
 
     standings = calculate_standings()
     print(standings)
+
+    timestamp = datetime.datetime.now()
+    outfile_name = f'standings_{timestamp:%y-%m-%dT%H-%M-%S}.txt'
+    with open(f'{DATA_DIR}/{outfile_name}', 'w') as outfile:
+        outfile.write(standings + '\n')
