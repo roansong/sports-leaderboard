@@ -3,7 +3,7 @@ import datetime
 from sys import argv
 from typing import List, Tuple
 
-DEFAULT_FILE = 'example.txt'
+DEFAULT_FILE = 'tests/example.txt'
 LEAGUE = dict()
 DATA_DIR = 'data'
 
