@@ -4,7 +4,11 @@
 ## Getting Started
 
 1. Create a python3 virtual environment and install project requirements, either
-   by running ``make venv`` or doing it manually with 
+   by running 
+   
+   ``make venv`` 
+   
+   or doing it manually with 
 
    ```
    python3 -m venv venv
@@ -13,15 +17,22 @@
 
 2. Run tests:
 
-    ``pytest tests``    
+    ``make test``    
 
-
-3. Run!
-
-    ``venv/bin/python main.py file1 file2 ... fileN``
+3. Run the example code by calling 
     
-    If no arguments are given, the default file will be used (``example.txt``).
-    Output is saved to a timestamped text file in the ``data`` folder.
+   ``make`` or ``make example``
+    
+   You can specify files to load by calling
+   
+   ``./main file1 file2 ... fileN``
+   
+   or
+
+   ``venv/bin/python main.py file1 file2 ... fileN``
+    
+   If no arguments are given, the default file will be used (``example.txt``).
+   Output is saved to a timestamped text file in the ``data`` folder.
 ## File Format
 
 The input files should contain a sequence of matches, one per line. The format
