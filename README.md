@@ -1,21 +1,21 @@
-# Sports 'n' Stuff
+# Sports Leaderboard
 
 ## Getting Started
 
-1. Create a python3 virtual environment: 
+1. Create a python3 virtual environment and install project requirements, either
+   by running ``make venv`` or doing it manually with 
 
-   ``python3 -m venv venv``
-   
-2. Install project requirements:
-
-    ``venv/bin/pip install -r requirements.txt``
+   ```
+   python3 -m venv venv
+   venv/bin/pip install -r requirements.txt
+   ```
     
-3. Run!
+2. Run!
 
     ``venv/bin/python main.py file1 file2 ... fileN``
     
     If no arguments are given, the default file will be used (``example.txt``).
-    
+    Output is saved to a timestamped text file in the ``data`` folder.
 ## File Format
 
 The input files should contain a sequence of matches, one per line. The format
@@ -40,7 +40,7 @@ A win is worth 3 points, a draw is worth 1 point, and a loss is worth 0 points.
 In the case where one or more teams share a league score, they are given the
 same rank and are ordered alphabetically.
 
-e.g. the above input should output:
+e.g. the above input should produce the following output:
 
 ```
 1. Tarantulas, 6 pts
