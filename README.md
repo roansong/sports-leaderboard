@@ -1,4 +1,5 @@
-# Sports Leaderboard
+# Sports Leaderboard [![Build Status](https://travis-ci.org/roansong/sports-leaderboard.svg?branch=master)](https://travis-ci.org/roansong/sports-leaderboard)
+
 
 ## Getting Started
 
