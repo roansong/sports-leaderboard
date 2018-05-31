@@ -1,10 +1,11 @@
 # coding=utf-8
 import datetime
+from collections import defaultdict
 from sys import argv
 from typing import List, Tuple
 
 DEFAULT_FILE = 'tests/example.txt'
-LEAGUE = dict()
+LEAGUE = defaultdict(int)
 DATA_DIR = 'data'
 
 
@@ -58,7 +59,6 @@ def update_league_data(fname: str) -> None:
         match = infile.readline().rstrip()
         while match:
             teams, scores = parse_line(match)
-            [LEAGUE.setdefault(team, 0) for team in teams]
             if scores[0] == scores[1]:
                 LEAGUE[teams[0]] += 1
                 LEAGUE[teams[1]] += 1
@@ -85,9 +85,8 @@ def calculate_standings() -> str:
 
     :return: A string displaying the leaderboard
     """
-    leaderboard = dict()
+    leaderboard = defaultdict(list)
     for team, score in LEAGUE.items():
-        leaderboard[score] = leaderboard.setdefault(score, [])
         leaderboard[score].append(team)
     for score, team in leaderboard.items():
         leaderboard[score] = sorted(leaderboard[score], key=str.lower)
